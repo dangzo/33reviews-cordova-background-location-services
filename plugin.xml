@@ -62,6 +62,10 @@
             <string>${EXECUTABLE_NAME} Would Like to Use Your Current Location Even In Background.</string>
         </config-file>
 
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+            <string>${EXECUTABLE_NAME} Would Like to Use Your Current Location While The App is In Use.</string>
+        </config-file>
+
         <config-file target="*-Info.plist" parent="UIBackgroundModes">
             <array>
                 <string>location</string>

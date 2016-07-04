@@ -33,9 +33,7 @@ module.exports = function(context) {
 
         projectFile = platform_ios.parseProjectFile(iosPlatformPath);
         xcodeProject = projectFile.xcode;
-console.log(projectFile);
-console.log(iosPlatformPath);
-
+        
         if (fs.existsSync(xcconfigPath)) {
             xcconfigContent = fs.readFileSync(xcconfigPath, 'utf-8');
         }
