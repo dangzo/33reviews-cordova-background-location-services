@@ -33,6 +33,8 @@ module.exports = function(context) {
 
         projectFile = platform_ios.parseProjectFile(iosPlatformPath);
         xcodeProject = projectFile.xcode;
+console.log(projectFile);
+console.log(iosPlatformPath);
 
         if (fs.existsSync(xcconfigPath)) {
             xcconfigContent = fs.readFileSync(xcconfigPath, 'utf-8');
@@ -54,7 +56,7 @@ module.exports = function(context) {
                 buildSettings = configurations[config].buildSettings;
                 buildSettings['IPHONEOS_DEPLOYMENT_TARGET'] = IOS_DEPLOYMENT_TARGET;
                 buildSettings['EMBEDDED_CONTENT_CONTAINS_SWIFT'] = "YES";
-                buildSettings['LD_RUNPATH_SEARCH_PATHS'] = '"@executable_path/Frameworks"'
+                buildSettings['LD_RUNPATH_SEARCH_PATHS'] = '"@executable_path/Frameworks"';
             }
             console.log('IOS project now has deployment target set as:[' + IOS_DEPLOYMENT_TARGET + '] ...');
             console.log('IOS project option EMBEDDED_CONTENT_CONTAINS_SWIFT set as:[YES] ...');
@@ -102,7 +104,7 @@ module.exports = function(context) {
             content = ["//",
                        "//  Use this file to import your target's public headers that you would like to expose to Swift.",
                        "//",
-                       "#import <Cordova/CDV.h>"]
+                       "#import <Cordova/CDV.h>"];
 
         //fs.openSync(newBHPath, 'w');
         console.log('Creating new Bridging-Header.h at path: ', newBHPath);
@@ -142,7 +144,7 @@ module.exports = function(context) {
                 if (content.charAt(content.length - 1) != '\n') {
                     content += "\n";
                 }
-                content += "#import \""+header+"\"\n"
+                content += "#import \""+header+"\"\n";
                 console.log('Importing ' + header + ' into main bridging-header at: ' + mainBridgingHeader);
             }
         });
@@ -166,4 +168,4 @@ module.exports = function(context) {
     function unquote(str) {
         if (str) return str.replace(/^"(.*)"$/, "$1");
     }
-}
+};

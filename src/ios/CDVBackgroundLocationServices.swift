@@ -52,7 +52,6 @@ var activityCommandDelegate:CDVCommandDelegate?;
     //Initialize things here (basically on run)
     override func pluginInitialize() {
         super.pluginInitialize();
-console.log("initialized");
         locationManager.requestLocationPermissions();
         self.promptForNotificationPermission();
 
@@ -496,10 +495,9 @@ class LocationManager : NSObject, CLLocationManagerDelegate {
         } else {
             log("Location services enabled");
         }
-console.log("Forced requestAlwaysAuthorization()");
-        //if #available(iOS 8, *) {
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
             self.manager.requestAlwaysAuthorization();
-        //}
+        }
     }
 
 }
